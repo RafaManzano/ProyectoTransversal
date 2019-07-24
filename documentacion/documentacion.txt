@@ -1,0 +1,9 @@
+El proyecto se realizara mediante dos perspectivas:
+	-Alumno: El alumno tiene un registro previo, cuando se registre se realizara un test y si supera una nota sera apto y 
+	         sino sera no apto, despues podra ver sus datos personales junto a su nota
+
+	-Profesor: El profesor tambien tiene un registro previo pero con la diferencia de tener un campo de identificacion de profesor, 
+		   cuando inicie sesion podra ver una lista de alumnos para poder incluir en su clase (maximo 30)
+
+Para la maquetacion:
+	- Login Alumno, Login Profesor, Test Alumno, Perfil Alumno y Listado de alumnos para profesor
