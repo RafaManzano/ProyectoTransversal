@@ -1,7 +1,18 @@
 package models;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+
+import clases.Alumno;
+import clases.Asignatura;
+import clases.Usuario;
+import ddbb.DataBaseConnection;
 
 /**
  * Session Bean implementation class Model
