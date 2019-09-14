@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import clases.Alumno;
+import clases.Profesor;
 import clases.Usuario;
 
 public class DataBaseConnection {
@@ -72,6 +73,26 @@ public class DataBaseConnection {
 		return rs;
 	}
 	
+	public ResultSet dameProfesores() throws SQLException {
+		ResultSet rs = null;
+		String query = "SELECT nombre, primerApellido, segundoApellido, usuario, password FROM profesores";
+		
+		Statement stmt;
+		try {
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(query);
+		} 
+		
+		catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			Logger.getLogger(DataBaseConnection.class.getName())
+		 	.log(Level.INFO, null, e);
+		}
+		
+		return rs;
+	}
+	
 	public void altaAlumno(Alumno alumno) {
 		String query = "INSERT INTO alumnos (`nombre`, `primerApellido`, "
 				+ "`segundoApellido`, `usuario`, `password`)"
@@ -89,17 +110,47 @@ public class DataBaseConnection {
 		stmt.setString(5, alumno.getPassword());
 		
 		stmt.executeUpdate();
-		} 
-		catch (ClassNotFoundException e) {
+		
+		} catch (ClassNotFoundException e) {
 			Logger.getLogger(DataBaseConnection.class.getName())
 		 	.log(Level.INFO, null, e);
-		}
-		catch(SQLException e) {
+			
+		} catch(SQLException e) {
 			Logger.getLogger(DataBaseConnection.class.getName())
 		 	.log(Level.INFO, null, e);
 		}
 	}
 
+	public void altaProfesor(Profesor profesor) {
+		String query = "INSERT INTO alumnos (`nombre`, `primerApellido`, "
+				+ "`segundoApellido`, `usuario`, `password`, `notaCorte`, `nombreAsignatura`)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?);";
+		PreparedStatement stmt;
+		try {
+			conn = getConnection();
+		
+		stmt = conn.prepareStatement(query);
+		
+		stmt.setString(1, profesor.getNombre());
+		stmt.setString(2, profesor.getPrimerApellido());
+		stmt.setString(3, profesor.getSegundoApellido());
+		stmt.setString(4, profesor.getUsuario());
+		stmt.setString(5, profesor.getPassword());
+		stmt.setInt(6, profesor.getNotaCorte());
+		stmt.setString(7, profesor.getNombreAsignatura());
+		
+		
+		stmt.executeUpdate();
+		
+		} catch (ClassNotFoundException e) {
+			Logger.getLogger(DataBaseConnection.class.getName())
+		 	.log(Level.INFO, null, e);
+		} catch(SQLException e) {
+			Logger.getLogger(DataBaseConnection.class.getName())
+		 	.log(Level.INFO, null, e);
+		}
+	}
+	
 	public ResultSet dameLogin(Usuario usu) throws SQLException {
 		ResultSet rs = null;
 		String query = "SELECT `usuario`, `password` FROM `alumnos`"
