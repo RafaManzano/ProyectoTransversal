@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,7 +112,7 @@ a {
 
 
 </style>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title></title>
 </head>
 <body>
@@ -162,9 +162,9 @@ a {
                     </button>
                 </form>
                 <div class="form-group text-center">
-                    <a class="pwd-forget" href="javascript:void(0)" id="open_forgotPassword">¿Olvidaste tu contraseña?</a>
+                    <a class="pwd-forget" href="javascript:void(0)" id="open_forgotPassword">Â¿Olvidaste tu contraseÃ±a?</a>
                 </div>
-                <div class="text-center">¿No estas registrado?<a href="registroAlumno.jsp">Registrate aquí</a></div>
+                <div class="text-center">Â¿No estas registrado?<a href="registroAlumno.jsp">Registrate aquÃ­</a></div>
             </div>
         </div>
     </div>
