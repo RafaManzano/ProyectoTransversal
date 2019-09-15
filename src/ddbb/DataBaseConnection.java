@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import clases.Alumno;
 import clases.Profesor;
+import clases.TipoCuenta;
 import clases.Usuario;
 
 public class DataBaseConnection {
@@ -156,12 +157,13 @@ public class DataBaseConnection {
 		String query = "SELECT `usuario`, `password` FROM `alumnos`"
 				+ "WHERE `usuario` = ? AND `password` = ?;"  ;
 		PreparedStatement stmt;
-		
+				
 		try {
 			conn = getConnection();
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, usu.getUsuario());
 			stmt.setString(2, usu.getPassword());
+			usu.setTipoCuenta(TipoCuenta.ALUMNO);
 			rs = stmt.executeQuery();
 			
 		} catch (ClassNotFoundException e) {
@@ -173,12 +175,13 @@ public class DataBaseConnection {
 		String query2 = "SELECT `usuario`, `password` FROM `profesores`"
 				+ "WHERE `usuario` = ? AND `password` = ?;"  ;
 		PreparedStatement stmt2;
-		
+				
 		try {
 			conn = getConnection();
 			stmt2 = conn.prepareStatement(query2);
 			stmt2.setString(1, usu.getUsuario());
 			stmt2.setString(2, usu.getPassword());
+			usu.setTipoCuenta(TipoCuenta.PROFESOR);
 			rs = stmt2.executeQuery();
 			
 		} catch (ClassNotFoundException e) {

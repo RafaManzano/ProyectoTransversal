@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ddbb.DataBaseConnection;
+import clases.TipoCuenta;
 import clases.Usuario;
 import models.Model;
 
@@ -61,11 +62,18 @@ public class LoginController extends HttpServlet {
 		
 		Model m = new Model();
 		
+		
 		if(m.getUsuario(usuario) != null) { //&& sesion.getAttribute("usuario") == null
 			//sesion.setAttribute("usuario", usu);
 			//Aqui quedaria mandar hacia listado
 			//Pensar alguna forma de coger el ID y poder mandarlo
-			request.getRequestDispatcher( "/listado.jsp" ).forward( request, response );
+			
+			if (m.getUsuario(usuario).getTipoCuenta() == TipoCuenta.ALUMNO){
+				request.getRequestDispatcher( "/listado.jsp" ).forward( request, response );
+			} else {
+				//hay que sustituir la direccion de envio para ir a la parte del profesor
+				request.getRequestDispatcher( "/listado.jsp" ).forward( request, response );
+			}
 		}
 		else {
 			doGet(request, response);
