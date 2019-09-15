@@ -122,7 +122,7 @@ public class DataBaseConnection {
 	}
 
 	public void altaProfesor(Profesor profesor) {
-		String query = "INSERT INTO alumnos (`nombre`, `primerApellido`, "
+		String query = "INSERT INTO profesores (`nombre`, `primerApellido`, "
 				+ "`segundoApellido`, `usuario`, `password`, `notaCorte`, `nombreAsignatura`)"
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?);";
 		PreparedStatement stmt;
@@ -168,7 +168,24 @@ public class DataBaseConnection {
 			Logger.getLogger(DataBaseConnection.class.getName())
 			.log(Level.INFO, null, e);
 		}
+	
+		if (rs.getRow() == 0){
+		String query2 = "SELECT `usuario`, `password` FROM `profesores`"
+				+ "WHERE `usuario` = ? AND `password` = ?;"  ;
+		PreparedStatement stmt2;
 		
+		try {
+			conn = getConnection();
+			stmt2 = conn.prepareStatement(query2);
+			stmt2.setString(1, usu.getUsuario());
+			stmt2.setString(2, usu.getPassword());
+			rs = stmt2.executeQuery();
+			
+		} catch (ClassNotFoundException e) {
+			Logger.getLogger(DataBaseConnection.class.getName())
+			.log(Level.INFO, null, e);
+		}
+		}
 		return rs;
 	}
 	

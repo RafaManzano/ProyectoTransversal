@@ -13,22 +13,22 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/Rafael Manzano/Desktop/utiles/gson-2.8.5.jar">
+	<classpathentry kind="lib" path="C:/Users/Suso/Downloads/javax.ejb.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Rafael Manzano/Desktop/utiles/javax.ejb.jar">
+	<classpathentry kind="lib" path="C:/Users/Suso/Downloads/jstl-1.2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Rafael Manzano/Desktop/utiles/jstl-1.2.jar">
+	<classpathentry kind="lib" path="C:/Users/Suso/Downloads/mysql-connector-java-8.0.17.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Rafael Manzano/Desktop/utiles/mysql-connector-java-8.0.17.jar">
+	<classpathentry kind="lib" path="C:/Users/Suso/Downloads/gson-2.8.5.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
