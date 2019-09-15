@@ -11,11 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import clases.Alumno;
-<<<<<<< HEAD
-=======
 import clases.Profesor;
 import clases.TipoCuenta;
->>>>>>> 6f120cd289efe09b1600eae88078df99e57c8c0c
 import clases.Usuario;
 
 public class DataBaseConnection {
@@ -35,7 +32,6 @@ public class DataBaseConnection {
 		
 		Properties info;
 		String urlConn;
-		
 		
 		urlConn = "jdbc:mysql://localhost:3306/academia?"
 				+ "useUnicode=true&useJDBCCompliantTimezoneShift="
@@ -99,9 +95,10 @@ public class DataBaseConnection {
 			Logger.getLogger(DataBaseConnection.class.getName())
 		 	.log(Level.INFO, null, e);
 		}
-<<<<<<< HEAD
 		catch(SQLException e) {
-=======
+			Logger.getLogger(DataBaseConnection.class.getName())
+		 	.log(Level.INFO, null, e);
+		}
 	}
 
 	public void altaProfesor(Profesor profesor) {
@@ -129,7 +126,6 @@ public class DataBaseConnection {
 			Logger.getLogger(DataBaseConnection.class.getName())
 		 	.log(Level.INFO, null, e);
 		} catch(SQLException e) {
->>>>>>> 6f120cd289efe09b1600eae88078df99e57c8c0c
 			Logger.getLogger(DataBaseConnection.class.getName())
 		 	.log(Level.INFO, null, e);
 		}
