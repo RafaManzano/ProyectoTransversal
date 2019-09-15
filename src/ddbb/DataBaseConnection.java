@@ -11,8 +11,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import clases.Alumno;
+<<<<<<< HEAD
+=======
 import clases.Profesor;
 import clases.TipoCuenta;
+>>>>>>> 6f120cd289efe09b1600eae88078df99e57c8c0c
 import clases.Usuario;
 
 public class DataBaseConnection {
@@ -74,26 +77,6 @@ public class DataBaseConnection {
 		return rs;
 	}
 	
-	public ResultSet dameProfesores() throws SQLException {
-		ResultSet rs = null;
-		String query = "SELECT nombre, primerApellido, segundoApellido, usuario, password FROM profesores";
-		
-		Statement stmt;
-		try {
-			conn = getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(query);
-		} 
-		
-		catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			Logger.getLogger(DataBaseConnection.class.getName())
-		 	.log(Level.INFO, null, e);
-		}
-		
-		return rs;
-	}
-	
 	public void altaAlumno(Alumno alumno) {
 		String query = "INSERT INTO alumnos (`nombre`, `primerApellido`, "
 				+ "`segundoApellido`, `usuario`, `password`)"
@@ -111,15 +94,14 @@ public class DataBaseConnection {
 		stmt.setString(5, alumno.getPassword());
 		
 		stmt.executeUpdate();
-		
-		} catch (ClassNotFoundException e) {
-			Logger.getLogger(DataBaseConnection.class.getName())
-		 	.log(Level.INFO, null, e);
-			
-		} catch(SQLException e) {
+		} 
+		catch (ClassNotFoundException e) {
 			Logger.getLogger(DataBaseConnection.class.getName())
 		 	.log(Level.INFO, null, e);
 		}
+<<<<<<< HEAD
+		catch(SQLException e) {
+=======
 	}
 
 	public void altaProfesor(Profesor profesor) {
@@ -147,11 +129,12 @@ public class DataBaseConnection {
 			Logger.getLogger(DataBaseConnection.class.getName())
 		 	.log(Level.INFO, null, e);
 		} catch(SQLException e) {
+>>>>>>> 6f120cd289efe09b1600eae88078df99e57c8c0c
 			Logger.getLogger(DataBaseConnection.class.getName())
 		 	.log(Level.INFO, null, e);
 		}
 	}
-	
+
 	public ResultSet dameLogin(Usuario usu) throws SQLException {
 		ResultSet rs = null;
 		String query = "SELECT `usuario`, `password` FROM `alumnos`"
@@ -192,17 +175,17 @@ public class DataBaseConnection {
 		return rs;
 	}
 	
-	//No esta acabado
-	public ResultSet dameAsignaturas() throws SQLException {
+	//No esta acabado. Voy a probar
+	public ResultSet dameAsignaturas(int nota) throws SQLException {
 		ResultSet rs = null;
-		String query = "SELECT id, nombreAsignatura FROM profesores WHERE notaCorte = ?;"; 		
-		Statement stmt;
+		String query = "SELECT id, nombreAsignatura FROM profesores WHERE notaCorte < ?;"; 		
+		PreparedStatement stmt;
 		try {
 			conn = getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(query);
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, nota);
+			rs = stmt.executeQuery();
 		} 
-		
 		catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			Logger.getLogger(DataBaseConnection.class.getName())
@@ -211,5 +194,5 @@ public class DataBaseConnection {
 		
 		return rs;
 	}
+	
 }
-
