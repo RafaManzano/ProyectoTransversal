@@ -69,10 +69,10 @@ public class LoginController extends HttpServlet {
 			//Pensar alguna forma de coger el ID y poder mandarlo
 			
 			if (m.getUsuario(usuario).getTipoCuenta() == TipoCuenta.ALUMNO){
-				request.getRequestDispatcher( "/listado.jsp" ).forward( request, response );
+				request.getRequestDispatcher( "/listadoAlumnos.jsp" ).forward( request, response );
 			} else {
 				//hay que sustituir la direccion de envio para ir a la parte del profesor
-				request.getRequestDispatcher( "/listado.jsp" ).forward( request, response );
+				request.getRequestDispatcher( "/listadoProfesores.jsp" ).forward( request, response );
 			}
 		}
 		else {

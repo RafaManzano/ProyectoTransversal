@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,7 +112,7 @@ a {
 
 
 </style>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <title></title>
 </head>
 <body>
@@ -150,10 +150,10 @@ a {
                 <!--<form accept-charset="utf-8" method="post" action="">-->
                 <form id="loginMember" role="form" action="" method="post">
                     <div class="form-group">
-                        <input (change)="test($event)" type="text" class="form-control" id="user_id" placeholder="usuario" name="user_id">
+                        <input (change)="test($event)" type="text" class="form-control" id="user_id" placeholder="usuario" name="user_id" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                        <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
                     </div>
                     <button (click)="test($event)" class="btn btn-default login-popup-btn bg-dark" name="submit" value="1">Login
                  
@@ -162,9 +162,9 @@ a {
                     </button>
                 </form>
                 <div class="form-group text-center">
-                    <a class="pwd-forget" href="javascript:void(0)" id="open_forgotPassword">Â¿Olvidaste tu contraseÃ±a?</a>
+                    <a class="pwd-forget" href="javascript:void(0)" id="open_forgotPassword">¿Olvidaste tu contraseña?</a>
                 </div>
-                <div class="text-center">Â¿No estas registrado?<a href="registroAlumno.jsp">Registrate aquÃ­</a></div>
+                <div class="text-center">¿No estas registrado?<a href="registroAlumno.jsp">Registrate aquí</a></div>
             </div>
         </div>
     </div>

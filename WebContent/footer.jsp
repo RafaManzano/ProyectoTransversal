@@ -95,7 +95,7 @@ section .section-title {
 
 
 </style>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
