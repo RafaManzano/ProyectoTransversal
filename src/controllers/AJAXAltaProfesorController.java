@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import clases.Alumno;
 import clases.Profesor;
 import models.Model;
 
