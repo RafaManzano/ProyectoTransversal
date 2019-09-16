@@ -1,38 +1,20 @@
 package clases;
 
 public class Profesor {
-	
-	private Integer id;
 	private String nombre;
 	private String primerApellido;
 	private String segundoApellido;
-	private String usuario;
-	private String password;
-	private Integer NotaCorte;
-	private String NombreAsignatura;
+	private String Asignatura;
 	
 	public Profesor() {
 		super();
 	}
 
-	public Profesor(String nombre, String primerApellido, String segundoApellido, String usuario, String password,
-			Integer notaCorte, String nombreAsignatura) {
-		super();
+	public Profesor(String nombre, String primerApellido, String segundoApellido, String asignatura) {
 		this.nombre = nombre;
 		this.primerApellido = primerApellido;
 		this.segundoApellido = segundoApellido;
-		this.usuario = usuario;
-		this.password = password;
-		NotaCorte = notaCorte;
-		NombreAsignatura = nombreAsignatura;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
+		Asignatura = asignatura;
 	}
 
 	public String getNombre() {
@@ -59,39 +41,13 @@ public class Profesor {
 		this.segundoApellido = segundoApellido;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getAsignatura() {
+		return Asignatura;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setAsignatura(String asignatura) {
+		Asignatura = asignatura;
 	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Integer getNotaCorte() {
-		return NotaCorte;
-	}
-
-	public void setNotaCorte(Integer notaCorte) {
-		NotaCorte = notaCorte;
-	}
-
-	public String getNombreAsignatura() {
-		return NombreAsignatura;
-	}
-
-	public void setNombreAsignatura(String nombreAsignatura) {
-		NombreAsignatura = nombreAsignatura;
-	}
-	
-	
 	
 	
 }

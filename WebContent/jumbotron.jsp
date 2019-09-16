@@ -18,7 +18,7 @@
 
 </style>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Inicio</title>
 </head>
 <body>
 
@@ -26,7 +26,7 @@
     <h1 class="display-6">Bienvenidos a nuestra web</h1>
     <p class="lead">Esta web es un proyecto para el curso de java de fundacion telefonica y camara de comercio</p>
     <hr class="my-4">
-    <p>Nuestro grupo esta formado por: Rafael Jesus Arturo Germán.</p>
+    <p>Nuestro grupo esta formado por: Rafael, Jesus, Arturo y Germán.</p>
     <p class="lead">
         <a class="btn btn-primary btn-lg bg-dark border-0" href="https://conectaempleo-formacion.fundaciontelefonica.com/web/guest/nuestro-programa" role="button">Fundacion telefonica</a>
     </p>

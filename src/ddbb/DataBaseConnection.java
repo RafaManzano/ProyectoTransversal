@@ -11,8 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import clases.Alumno;
-import clases.Profesor;
-import clases.TipoCuenta;
+import clases.ProfesorFull;
 import clases.Usuario;
 
 public class DataBaseConnection {
@@ -32,6 +31,7 @@ public class DataBaseConnection {
 		
 		Properties info;
 		String urlConn;
+		
 		
 		urlConn = "jdbc:mysql://localhost:3306/academia?"
 				+ "useUnicode=true&useJDBCCompliantTimezoneShift="
@@ -101,73 +101,24 @@ public class DataBaseConnection {
 		}
 	}
 
-	public void altaProfesor(Profesor profesor) {
-		String query = "INSERT INTO profesores (`nombre`, `primerApellido`, "
-				+ "`segundoApellido`, `usuario`, `password`, `notaCorte`, `nombreAsignatura`)"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?);";
-		PreparedStatement stmt;
-		try {
-			conn = getConnection();
-		
-		stmt = conn.prepareStatement(query);
-		
-		stmt.setString(1, profesor.getNombre());
-		stmt.setString(2, profesor.getPrimerApellido());
-		stmt.setString(3, profesor.getSegundoApellido());
-		stmt.setString(4, profesor.getUsuario());
-		stmt.setString(5, profesor.getPassword());
-		stmt.setInt(6, profesor.getNotaCorte());
-		stmt.setString(7, profesor.getNombreAsignatura());
-		
-		
-		stmt.executeUpdate();
-		
-		} catch (ClassNotFoundException e) {
-			Logger.getLogger(DataBaseConnection.class.getName())
-		 	.log(Level.INFO, null, e);
-		} catch(SQLException e) {
-			Logger.getLogger(DataBaseConnection.class.getName())
-		 	.log(Level.INFO, null, e);
-		}
-	}
-
 	public ResultSet dameLogin(Usuario usu) throws SQLException {
 		ResultSet rs = null;
 		String query = "SELECT `usuario`, `password` FROM `alumnos`"
 				+ "WHERE `usuario` = ? AND `password` = ?;"  ;
 		PreparedStatement stmt;
-				
+		
 		try {
 			conn = getConnection();
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, usu.getUsuario());
 			stmt.setString(2, usu.getPassword());
-			usu.setTipoCuenta(TipoCuenta.ALUMNO);
 			rs = stmt.executeQuery();
 			
 		} catch (ClassNotFoundException e) {
 			Logger.getLogger(DataBaseConnection.class.getName())
 			.log(Level.INFO, null, e);
 		}
-	
-		if (rs.getRow() == 0){
-		String query2 = "SELECT `usuario`, `password` FROM `profesores`"
-				+ "WHERE `usuario` = ? AND `password` = ?;"  ;
-		PreparedStatement stmt2;
-				
-		try {
-			conn = getConnection();
-			stmt2 = conn.prepareStatement(query2);
-			stmt2.setString(1, usu.getUsuario());
-			stmt2.setString(2, usu.getPassword());
-			usu.setTipoCuenta(TipoCuenta.PROFESOR);
-			rs = stmt2.executeQuery();
-			
-		} catch (ClassNotFoundException e) {
-			Logger.getLogger(DataBaseConnection.class.getName())
-			.log(Level.INFO, null, e);
-		}
-		}
+		
 		return rs;
 	}
 	
@@ -191,4 +142,99 @@ public class DataBaseConnection {
 		return rs;
 	}
 	
+	public ResultSet dameProfesor(int id) throws SQLException {
+		ResultSet rs = null;
+		String query = "SELECT nombre, primerApellido, segundoApellido, nombreAsignatura FROM profesores WHERE id = ?;"; 		
+		PreparedStatement stmt;
+		try {
+			conn = getConnection();
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+		} 
+		
+		catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			Logger.getLogger(DataBaseConnection.class.getName())
+		 	.log(Level.INFO, null, e);
+		}
+		
+		return rs;
+	}
+
+	public ResultSet dameLoginP(Usuario usu) throws SQLException {
+		ResultSet rs = null;
+		String query = "SELECT `usuario`, `password` FROM `profesores`"
+				+ "WHERE `usuario` = ? AND `password` = ?;"  ;
+		PreparedStatement stmt;
+		
+		try {
+			conn = getConnection();
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, usu.getUsuario());
+			stmt.setString(2, usu.getPassword());
+			rs = stmt.executeQuery();
+			
+		} catch (ClassNotFoundException e) {
+			Logger.getLogger(DataBaseConnection.class.getName())
+			.log(Level.INFO, null, e);
+		}
+		
+		return rs;
+	}
+
+	public void altaProfesor(ProfesorFull profesorFull) {
+		String query = "INSERT INTO profesores (`nombre`, `primerApellido`, "
+				+ "`segundoApellido`, `usuario`, `password`, `notaCorte`, `nombreAsignatura`)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?);";
+		PreparedStatement stmt;
+		try {
+			conn = getConnection();
+		
+		stmt = conn.prepareStatement(query);
+		
+		stmt.setString(1, profesorFull.getNombre());
+		stmt.setString(2, profesorFull.getPrimerApellido());
+		stmt.setString(3, profesorFull.getSegundoApellido());
+		stmt.setString(4, profesorFull.getUsuario());
+		stmt.setString(5, profesorFull.getPassword());
+		stmt.setInt(6, profesorFull.getNotaCorte());
+		stmt.setString(7, profesorFull.getAsignatura());
+		
+		stmt.executeUpdate();
+		} 
+		catch (ClassNotFoundException e) {
+			Logger.getLogger(DataBaseConnection.class.getName())
+		 	.log(Level.INFO, null, e);
+		}
+		catch(SQLException e) {
+			Logger.getLogger(DataBaseConnection.class.getName())
+		 	.log(Level.INFO, null, e);
+		}
+	}
+
+	public ResultSet dameAlumnosProfesor(int id) {
+		String query = "SELECT * FROM alumnos WHERE idProfesor = ?;";
+		PreparedStatement stmt;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+		}
+		catch(SQLException e) {
+			Logger.getLogger(DataBaseConnection.class.getName())
+		 	.log(Level.INFO, null, e);
+		}
+		catch(ClassNotFoundException e) {
+			Logger.getLogger(DataBaseConnection.class.getName())
+		 	.log(Level.INFO, null, e);
+		}
+		
+		
+		return rs;
+		
+	}
+
 }

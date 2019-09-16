@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,8 +112,8 @@ a {
 
 
 </style>
-<meta charset="ISO-8859-1">
-<title></title>
+<meta charset="UTF-8">
+<title>Login</title>
 </head>
 <body>
 
@@ -121,7 +121,7 @@ a {
 <div class="container container-width">
     <div class="row">
         <div class="col">
-            <button type="button" class="btn btn-primary bg-transparent border-0" data-toggle="modal" data-target="#loginModal">
+            <button type="button" class="btn btn-primary bg-transparent border-0" data-toggle="modal" data-target="#loginProfe">
               <img class="foto-alumno" src="http://www.stgeorges.co.uk/sites/default/files/English%20Teacher%20Training%20St%20George%20International%20school%20of%20English.png">
             </button>
         </div>
@@ -133,7 +133,7 @@ a {
     </div>
 </div>
 
-
+<!-- LOGIN ALUMNO -->
 <div class="modal fade bd-example-modal-lg" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -148,23 +148,60 @@ a {
                     <h4><i class="fa fa-lock" aria-hidden="true"></i> Login </h4>
                 </div>
                 <!--<form accept-charset="utf-8" method="post" action="">-->
-                <form id="loginMember" role="form" action="" method="post">
+                <form id="loginMembera" role="form" action="LoginController" method="POST">
                     <div class="form-group">
-                        <input (change)="test($event)" type="text" class="form-control" id="user_id" placeholder="usuario" name="user_id" required>
+                        <input (change)="test($event)" type="text" class="form-control" id="usu" placeholder="usuario" name="usu" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                        <input type="password" class="form-control" id="pass" placeholder="Password" name="pass" required>
                     </div>
-                    <button (click)="test($event)" class="btn btn-default login-popup-btn bg-dark" name="submit" value="1">Login
+                    <button type = "submit" class="btn btn-default login-popup-btn bg-dark" name="submit">Login
                  
-                  /*linkear para que vaya a la vista del formulario*/
+<!--                   /*linkear para que vaya a la vista del formulario*/ -->
                     
                     </button>
                 </form>
                 <div class="form-group text-center">
-                    <a class="pwd-forget" href="javascript:void(0)" id="open_forgotPassword">�Olvidaste tu contrase�a?</a>
+                    <a class="pwd-forget" href="javascript:void(0)" id="open_forgotPassword">¿Olvidaste tu contraseña?</a>
                 </div>
-                <div class="text-center">�No estas registrado?<a href="registroAlumno.jsp">Registrate aqu�</a></div>
+                <div class="text-center">¿No estas registrado?<a href="registroAlumno.jsp">Registrate aquí</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- LOGIN PROFESOR -->
+<div class="modal fade bd-example-modal-lg" id="loginProfe" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">LOGIN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="login-popup-wrap new_login_popup">
+                <div class="login-popup-heading text-center">
+                    <h4><i class="fa fa-lock" aria-hidden="true"></i> Login </h4>
+                </div>
+                <!--<form accept-charset="utf-8" method="post" action="">-->
+                <form id="loginMember" role="form" action="LoginPController" method="POST">
+                    <div class="form-group">
+                        <input (change)="test($event)" type="text" class="form-control" id="usuario" placeholder="usuario" name="usuario" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                    </div>
+                    <button type = "submit" class="btn btn-default login-popup-btn bg-dark" name="submit">Login
+                 
+<!--                   /*linkear para que vaya a la vista del formulario*/ -->
+                    </button>
+                </form>
+                <div class="form-group text-center">
+                    <a class="pwd-forget" href="javascript:void(0)" id="open_forgotPassword">¿Olvidaste tu contraseña?</a>
+                </div>
+                <div class="text-center">¿No estas registrado?<a href="registroProfesor.jsp">Registrate aquí</a></div>
             </div>
         </div>
     </div>

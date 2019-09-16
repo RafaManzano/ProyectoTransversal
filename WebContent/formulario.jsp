@@ -21,7 +21,7 @@
 
 </style>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Test</title>
 <%-- <% Model m = new Model();
 	List<Asignatura> asignaturas = m.getAsignaturas();
 %>
@@ -144,7 +144,7 @@ o absurdo de la proposición contraria<br>
 <!-- </form>	 -->
 	
 	
-	<button  id = "btn1" onclick = "validarTest()"><a href="listadoProfesores">Enviar</a></button>
+	<button  id = "btn1" onclick = "validarTest()"><a href="listadoProfesores.jsp">Enviar</a></button>
 	</div>
 	
 <!-- 	<label for="departamento">Departamento: </label> -->
@@ -158,7 +158,7 @@ o absurdo de la proposición contraria<br>
 <%--              %>  --%>
 <!--      </select> -->
 	
-	<!-- <script>
+	<script>
 	function validarTest() {
 		//alert("Hola");
 		var contador = 0;
@@ -275,8 +275,8 @@ o absurdo de la proposición contraria<br>
 				}
 			}
 		}
-		Element.setAttribute("contador", contador);
-		//alert(contador);
+		//Element.setAttribute("contador", contador);
+		alert(contador);
 	}
 	/*
 	document.getElementById("btn1").addEventListener("click", function() {
@@ -319,11 +319,11 @@ o absurdo de la proposición contraria<br>
 		//alert("El resultado del test es " + contador);
 	//}
 	
-	document.getElementById("btn1").addEventListener("click", function() {
-		//alert("Probando");
-		//Aqui tengo que anhadir la funcion para mostrar el desplegable y poder elegir uno
-	});
-	</script> -->
+// 	document.getElementById("btn1").addEventListener("click", function() {
+// 		//alert("Probando");
+// 		//Aqui tengo que anhadir la funcion para mostrar el desplegable y poder elegir uno
+// 	});
+	</script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

@@ -15,15 +15,15 @@ import models.Model;
 /**
  * Servlet implementation class LoginController
  */
-@WebServlet("/LoginController")
-public class LoginController extends HttpServlet {
+@WebServlet("/LoginPController")
+public class LoginPController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static int contador = 0;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public LoginPController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -54,18 +54,18 @@ public class LoginController extends HttpServlet {
 		//HttpSession sesion = request.getSession();
 		String usu;
 		String pass;
-		usu = request.getParameter("usu");
-	    pass = request.getParameter("pass");
+		usu = request.getParameter("usuario");
+	    pass = request.getParameter("password");
 		
 		Usuario usuario = new Usuario(usu,pass);
 		
 		Model m = new Model();
 		
-		if(m.getUsuario(usuario) != null) { //&& sesion.getAttribute("usuario") == null
+		if(m.getUsuarioP(usuario) != null) { //&& sesion.getAttribute("usuario") == null
 			//sesion.setAttribute("usuario", usu);
 			//Aqui quedaria mandar hacia listado
 			//Pensar alguna forma de coger el ID y poder mandarlo
-			request.getRequestDispatcher( "/listadoProfesores.jsp" ).forward( request, response );
+			request.getRequestDispatcher( "/listadoAlumnos.jsp" ).forward( request, response );
 		}
 		else {
 			doGet(request, response);
