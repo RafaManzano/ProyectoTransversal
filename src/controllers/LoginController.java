@@ -20,14 +20,14 @@ import models.Model;
  * Servlet implementation class LoginController
  */
 @WebServlet("/LoginController")
-public class LoginControllerAlumno extends HttpServlet {
+public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static int contador = 0;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginControllerAlumno() {
+    public LoginController() {
         super();
         // TODO Auto-generated constructor stub
     }
