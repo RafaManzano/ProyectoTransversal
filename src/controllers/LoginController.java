@@ -71,7 +71,6 @@ public class LoginController extends HttpServlet {
 			if (m.getUsuario(usuario).getTipoCuenta() == TipoCuenta.ALUMNO){
 				request.getRequestDispatcher( "/listadoAlumnos.jsp" ).forward( request, response );
 			} else {
-				//hay que sustituir la direccion de envio para ir a la parte del profesor
 				request.getRequestDispatcher( "/listadoProfesores.jsp" ).forward( request, response );
 			}
 		}

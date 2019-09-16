@@ -11,9 +11,10 @@ import javax.ejb.Stateless;
 
 import clases.Alumno;
 import clases.Asignatura;
+import clases.Profesor;
+import clases.TipoCuenta;
 import clases.Usuario;
 import ddbb.DataBaseConnection;
-//Puto Github
 
 /**
  * Session Bean implementation class Model
@@ -24,6 +25,7 @@ public class Model {
 
 	private Alumno alumno;
 	private Usuario usuario;
+	private Profesor profesor;
 	private List<Asignatura> asignaturas;
     /**
      * Default constructor. 
@@ -38,18 +40,36 @@ public class Model {
 	public void setAlumno(Alumno alumno) {
 		
 		DataBaseConnection conexion;
-		conexion = new DataBaseConnection("rmanzano","Temp2019$$");
+		conexion = new DataBaseConnection("jsolis","Temp2019$$");
 		
 		conexion.altaAlumno(alumno);
 		this.alumno = alumno;
 	}
+	
+	public Profesor getProfesor() {
+		return profesor;
+	}
+	public void setProfesor(Profesor profesor) {
+		
+		DataBaseConnection conexion;
+		conexion = new DataBaseConnection("jsolis","Temp2019$$");
+		
+		conexion.altaProfesor(profesor);
+		this.profesor = profesor;
+	}
+	
 	public Usuario getUsuario(Usuario usu)  {
-		DataBaseConnection bbdd = new DataBaseConnection("rmanzano", "Temp2019$$");
+		DataBaseConnection bbdd = new DataBaseConnection("jsolis", "Temp2019$$");
 		usuario = new Usuario();
 		ResultSet rs = null;
 		try {
 			rs = bbdd.dameLogin(usu);
 			if(rs.next() && rs.getRow() != 0) {
+				//Si Fetch size detecta el numero de columnas hace lo que quiero, si no, hay que buscar una funcion que permita diferenciar
+				//un resulset de alumno de uno de profesor y sustituirlo en la condicion del if
+				if(rs.getFetchSize() == 7) { usuario.setTipoCuenta(TipoCuenta.ALUMNO);
+				} else {usuario.setTipoCuenta(TipoCuenta.PROFESOR);}
+				
 				usuario.setUsuario(rs.getString("usuario"));
 				usuario.setPassword(rs.getString("password"));
 			}
@@ -59,7 +79,6 @@ public class Model {
 			
 		} 
 		catch (SQLException e) {
-			// TODO Auto-generated catch block
 			Logger.getLogger(DataBaseConnection.class.getName())
 		 	.log(Level.INFO, null, e);
 		}
