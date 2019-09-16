@@ -187,7 +187,6 @@ public class DataBaseConnection {
 			Logger.getLogger(DataBaseConnection.class.getName())
 		 	.log(Level.INFO, null, e);
 		}
-		
 		return rs;
 	}
 	

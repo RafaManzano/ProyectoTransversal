@@ -13,18 +13,21 @@ import clases.TipoCuenta;
 import clases.Usuario;
 import models.Model;
 
+//He refactorizado el nombre de LoginController a LoginControllerAlumno, y quitado la modificacion que intentaba unificar el login 
+//de ambas cuentas. El resultado mostrado sigue siento el mismo: vuelta al index.
+
 /**
  * Servlet implementation class LoginController
  */
 @WebServlet("/LoginController")
-public class LoginController extends HttpServlet {
+public class LoginControllerAlumno extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static int contador = 0;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public LoginControllerAlumno() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -68,12 +71,12 @@ public class LoginController extends HttpServlet {
 			//Aqui quedaria mandar hacia listado
 			//Pensar alguna forma de coger el ID y poder mandarlo
 			
-			if (m.getUsuario(usuario).getTipoCuenta() == TipoCuenta.ALUMNO){
+			//if (m.getUsuario(usuario).getTipoCuenta() == TipoCuenta.ALUMNO){
 				request.getRequestDispatcher( "/listadoAlumnos.jsp" ).forward( request, response );
-			} else {
+			//} else {
 				//hay que sustituir la direccion de envio para ir a la parte del profesor
-				request.getRequestDispatcher( "/listadoProfesores.jsp" ).forward( request, response );
-			}
+			//	request.getRequestDispatcher( "/listadoProfesores.jsp" ).forward( request, response );
+			//}
 		}
 		else {
 			doGet(request, response);
